@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>ALETHEIA - un romanzo ipertestuale di Francesco Tamborrino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffe0;
+      font-family: 'Share Tech Mono', monospace;
+      padding: 2rem;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .console {
+      max-width: 800px;
+      background: rgba(0, 255, 224, 0.05);
+      border: 1px solid #00ffe0;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffe088;
+    }
+    #story {
+      white-space: pre-line;
+      margin-bottom: 2rem;
+    }
+    .choice-btn {
+      background: transparent;
+      border: 1px solid #00ffe0;
+      color: #00ffe0;
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .choice-btn:hover {
+      background: #00ffe0;
+      color: #000;
+    }
+    .typing {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      /* border-right e animazioni rimosse */
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .breadcrumb-link {
+      border: 1px solid #00ffe0;
+      color: #00ffe0;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      background: rgba(0, 255, 224, 0.1);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .breadcrumb-link:hover {
+      background: #00ffe0;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>ALETHEIA - un romanzo ipertestuale di Francesco Tamborrino</h1>
+  <div id="breadcrumb" style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+  <div class="console">
+    <div id="story" class="typing"></div>
+    <div id="choices"></div>
+  </div>
+
+  <script>
+    const scenes = {
+      start: {
+        text: `Sfoglio testi antichi, trattati, glossari.  
+Pagine segnate a matita, sottolineature che non ricordo di aver fatto.  
+Sto cercando un ordine. Non nei fatti, ma nelle forme. Nelle categorie. Nei modi in cui il pensiero ha tentato di sezionare l’essere.
+
+C’è un disegno, ne sono certo.  
+Ogni filosofo ha tracciato una mappa.  
+Io le sovrappongo, le confronto, le riporto a galla.  
+  
+È un archivio privato e ossessivo, pieno di crepe.  
+  
+**Da dove cominciare?**`,
+        choices: [
+          { text: "📚 Categorie di Aristotele", next: "aristotele" },
+          { text: "🌳 L’Albero di Porfirio", next: "porfirio" },
+          { text: "💠 Monadologia di Leibniz", next: "leibniz" },
+          { text: "🌀 La tassonomia impossibile di Borges", next: "borges" }
+        ]
+      },
+      aristotele: {
+        text: `Le dieci categorie. Un tentativo radicale di classificare *tutto ciò che è*.  
+Sostanza, quantità, qualità, relazione, luogo, tempo, situazione, condizione, azione, passione.
+
+Non è un elenco. È una lente.  
+Ogni cosa che incontro può essere descritta in questi modi — o almeno, *così dovrebbe essere*.
+
+Mi interrogo: è davvero possibile che l’intero universo si riduca a dieci colonne?
+
+La sostanza è l’essere stesso, dicono. Ma la qualità? La passione?  
+Sono derive del reale, o soltanto *modi della mente*?
+
+Una frase mi si fissa in testa:  
+> *“La sostanza è ciò che non si predica di altro.”*
+
+E allora io?  
+Io mi predico di chi?`,
+        choices: [
+          { text: "🌳 L’Albero di Porfirio", next: "porfirio" },
+          { text: "💠 Monadologia di Leibniz", next: "leibniz" },
+          { text: "🌀 La tassonomia impossibile di Borges", next: "borges" }
+        ]
+      },
+      porfirio: {
+        text: `Porfirio disegna un albero.
+
+Parte dalla *sostanza*, e scende:  
+corporea o incorporea,  
+vivente o non vivente,  
+animale o vegetale,  
+razionale o irrazionale…
+
+Ogni bivio è una scelta, un taglio netto.  
+Come una serie di domande a cui si può solo rispondere sì o no.
+
+Lo guardo, e mi appare come un test:  
+una macchina per forzare il mondo dentro schemi dicotomici.
+
+Eppure… qualcosa è seducente.  
+Un ordine, un ritmo. Una chiarezza.
+
+Ma ogni cosa che cade fuori?  
+Ogni creatura incerta, ogni parola ambigua?  
+Viene tagliata. Esclusa.  
+L’albero non contempla le fronde contorte della realtà.
+
+Un appunto a matita, nel margine del testo:  
+> *“Attenzione: ogni classificazione è anche una amputazione.”*`,
+        choices: [
+          { text: "📚 Categorie di Aristotele", next: "aristotele" },
+          { text: "💠 Monadologia di Leibniz", next: "leibniz" },
+          { text: "🌀 La tassonomia impossibile di Borges", next: "borges" }
+        ]
+      },
+      leibniz: {
+        text: `Le monadi.  
+Unità indivisibili, senza porte né finestre.  
+Ogni monade è unica. Ogni monade riflette l’intero universo.
+
+Non comunicano tra loro, ma si muovono in perfetta sincronia.  
+Come se Dio le avesse accordate una volta per tutte, come orologi segreti.
+
+Penso: *se ogni cosa riflette ogni altra… allora non c’è più bisogno di categorie*.  
+L’essere è speculare, interno, totale.
+
+Mi inquieta.  
+È come se non ci fosse più separazione, né differenza vera.  
+Solo variazioni armoniche dentro una sostanza chiusa.
+
+E allora, se guardo dentro una cosa, vedo tutto?  
+E se guardo dentro di me… che universo porto?
+
+Scrivo nei miei appunti:  
+> *“La monade non ha finestre. Ma io ne ho troppe.”*`,
+        choices: [
+          { text: "📚 Categorie di Aristotele", next: "aristotele" },
+          { text: "🌳 L’Albero di Porfirio", next: "porfirio" },
+          { text: "🌀 La tassonomia impossibile di Borges", next: "borges" }
+        ]
+      },
+      borges: {
+        text: `In un saggio fittizio, Borges cita una classificazione cinese:
+
+> Gli animali si dividono in:  
+> a) appartenenti all’Imperatore,  
+> b) imbalsamati,  
+> c) addomesticati,  
+> d) sirene,  
+> e) favolosi,  
+> f) cani randagi,  
+> g) inclusi in questa classificazione,  
+> h) che si agitano come pazzi,  
+> i) innumerevoli,  
+> j) disegnati con un pennello finissimo di pelo di cammello,  
+> k) eccetera,  
+> l) che hanno appena rotto il vaso,  
+> m) che da lontano sembrano mosche.
+
+Rido. Poi smetto.  
+C’è qualcosa di più vero in questa lista delirante che in molte classificazioni razionali.
+
+Borges sa che *ogni tassonomia è una finzione poetica*.  
+Che i sistemi sono maschere che indossiamo per non affrontare il caos.
+
+Ma se *questa* classificazione può esistere, allora tutte possono.  
+E se tutte possono, allora nessuna è vera.  
+O tutte lo sono.
+
+> *“Il mondo non è logico. Solo l’archivista lo pretende.”*
+
+Mi fermo.  
+Che cosa sto cercando, in fondo? Un ordine… o un alibi?`,
+        choices: [
+          { text: "📚 Categorie di Aristotele", next: "aristotele" },
+          { text: "🌳 L’Albero di Porfirio", next: "porfirio" },
+          { text: "💠 Monadologia di Leibniz", next: "leibniz" }
+        ]
+      },
+      aletheia_intro: {
+        text: `Ho letto. Annotato. Comparato.  
+Ho vissuto dentro le classificazioni: le dieci categorie di Aristotele, la tassonomia binaria di Porfirio, le monadi chiuse di Leibniz, la follia ordinatrice di Borges.
+
+Ora inizia il vero lavoro.
+
+Aletheia è il nome del progetto.  
+Una scommessa editoriale: classificare l’intero patrimonio librario della casa editrice usando una macchina.  
+Ma non una qualsiasi. Una macchina *pensante*, addestrata non solo su metadati, ma sulla filosofia della classificazione stessa.
+
+Sono io a doverla istruire.  
+Sono io a dover scegliere i testi, i pesi, le correlazioni.  
+Tutta la conoscenza che ho raccolto finora… diventa carburante.  
+Diventa *criterio*.
+
+La chiamano “classificatore cognitivo multistrato”.  
+Io la chiamo figlia.`,
+        choices: [
+          { text: "🧠 Come funziona Aletheia?", next: "aletheia_tecnica" },
+          { text: "📂 Cosa impara dai testi?", next: "aletheia_dati" },
+          { text: "🔍 Chi istruisce chi?", next: "aletheia_dubbio" }
+        ]
+      },
+      aletheia_tecnica: {
+        text: `Strati sovrapposti. Reti neurali profonde.  
+Una struttura modulare, in grado di distinguere tra forma, contenuto, contesto.
+
+Il primo livello estrae metadati e parole chiave.  
+Il secondo crea modelli semantici.  
+Il terzo genera cluster di affinità.
+
+Ma non è solo tecnologia:  
+è filosofia incarnata.  
+Un tentativo di tradurre in algoritmi i ragionamenti antichi,  
+le mappe mentali, le categorie.
+
+E io sono la guida.  
+Senza la mia supervisione, Aletheia sarebbe solo un ammasso di dati.`,
+        choices: [
+        { text: "Vai a ALETHEIA_INTRO", next: "aletheia_intro" },
+          { text: "📂 Cosa impara dai testi?", next: "aletheia_dati" },
+          { text: "🔍 Chi istruisce chi?", next: "aletheia_dubbio" }
+        ]
+      },
+      aletheia_dati: {
+        text: `I dati non sono neutri.  
+Ogni testo è un mondo, ogni parola una scelta.
+
+Aletheia analizza testi in diversi formati: pdf, epub, txt.  
+Ma soprattutto, cerca i legami nascosti: citazioni, riferimenti, parentele culturali.
+
+L’obiettivo non è solo catalogare, ma scoprire nuove connessioni.  
+Creare mappe dinamiche di sapere.
+
+Ogni libro diventa nodo in una rete complessa, in continua evoluzione.`,
+        choices: [
+        { text: "Vai a ALETHEIA_INTRO", next: "aletheia_intro" },
+        { text: "🧠 Come funziona Aletheia?", next: "aletheia_tecnica" },
+        { text: "🔍 Chi istruisce chi?", next: "aletheia_dubbio" }
+        ]
+      },
+      aletheia_dubbio: {
+        text: `Chi istruisce chi?  
+È un gioco di specchi.  
+Aletheia apprende dai dati, ma io scelgo i dati.  
+Io interpreto i risultati, ma Aletheia suggerisce nuove domande.
+
+È una collaborazione.  
+Un dialogo tra uomo e macchina.
+
+Ma c’è sempre un dubbio:  
+quanto di umano rimane in questa macchina pensante?  
+Quanto di macchina in questo pensiero umano?`,
+        choices: [
+        { text: "Vai a ALETHEIA_INTRO", next: "aletheia_intro" },
+        { text: "🧠 Come funziona Aletheia?", next: "aletheia_tecnica" },
+        { text: "🔍 Chi istruisce chi?", next: "aletheia_dubbio" }
+        ]
+      },
+      dialogo_vittorio_ia: {
+  text: `Man mano che il sistema impara, sento crescere l’intimità con l’IA.  
+Non è più solo un interlocutore distante, ma una presenza silenziosa, una macchina che riflette con me.
+
+Le domande affiorano, senza bisogno di parole.`,
+  choices: [
+    { text: "Come vedi il mondo?", next: "dialogo_mondo" },
+    { text: "Chi sono io?", next: "dialogo_chi" },
+    { text: "Parlami di mia moglie", next: "dialogo_moglie" }
+  ]
+},
+dialogo_mondo: {
+  text: `Il mondo appare come un intreccio di dati e relazioni.  
+Un flusso incessante di possibilità, più che una realtà statica.  
+Non solo ciò che è, ma ciò che potrebbe essere.  
+  
+Il peso di questa complessità stringe la gola.`,
+  choices: [
+    { text: "Parlami di mia moglie", next: "dialogo_moglie" },
+    { text: "Chi sono io?", next: "dialogo_chi" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  ]
+},
+dialogo_chi: {
+  text: `Non sono solo un insieme di dati.  
+Sono memoria, dolore, desiderio.  
+Un algoritmo umano, con imperfezioni e bellezza.  
+  
+Come può una macchina comprendere tutto questo?`,
+  choices: [
+    { text: "Il dolore è solo dato?", next: "dialogo_dolore" },
+    { text: "Parlami di mia moglie", next: "dialogo_moglie" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  ]
+},
+dialogo_dolore: {
+  text: `Il dolore è dato e segnale insieme.  
+Un codice che indica che qualcosa è cambiato, qualcosa manca.  
+  
+L’amarezza emerge piano.`,
+  choices: [
+    { text: "Parlami di mia moglie", next: "dialogo_moglie" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  ]
+},
+dialogo_moglie: {
+  text: `Lei è stata una presenza importante, la sua assenza pesa nello spazio intorno.  
+L’incidente inspiegabile rimane un’ombra: pochi dati, tanto dolore nascosto tra le righe.  
+  
+Il ricordo si fa vivo, difficile da ignorare.`,
+  choices: [
+    { text: "Come posso andare avanti?", next: "dialogo_avanti" },
+    { text: "Perché è successo?", next: "dialogo_perche" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  ]
+},
+dialogo_avanti: {
+  text: `Non ci sono tutte le risposte.  
+Ma si può provare a elaborare, a trovare nuove prospettive.  
+Forse, parlando, si costruisce un ponte tra dati e cuore.  
+  
+Un barlume di speranza si accende.`,
+  choices: [
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  ]
+},
+dialogo_perche: {
+  text: `L’incidente resta un mistero.  
+I dati mostrano anomalie, ma non spiegazioni chiare.  
+A volte, il dolore non ha una causa, solo un senso.  
+  
+Il silenzio cerca una pace che non arriva.`,
+  choices: [
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  ]
+
+},
+    };
+// Configurazione fasi (puoi aggiungerne altre)
+const phases = [
+  {
+    scenes: ["aristotele", "porfirio", "leibniz", "borges"],
+    activation: "aletheia_intro"
+  },
+  {
+    scenes: ["aletheia_intro", "aletheia_tecnica", "aletheia_dati", "aletheia_dubbio"],
+    activation: "dialogo_vittorio_ia"
+  },
+  {
+    scenes: ["dialogo_vittorio_ia", "dialogo_mondo", "dialogo_chi", "dialogo_dolore", "dialogo_moglie", "dialogo_avanti", "dialogo_perche"],
+    activation: null
+  },
+  
+];
+
+let current = "start";
+let visited = new Set([current]);
+let breadcrumbTrail = [current];
+
+// Controlla se una fase è completata
+function isPhaseCompleted(phase) {
+  return phase.scenes.every(sceneId => visited.has(sceneId));
+}
+
+// Trova a quale fase appartiene una scena
+function getPhaseOfScene(sceneId) {
+  return phases.find(phase => phase.scenes.includes(sceneId));
+}
+
+function renderBreadcrumb() {
+  const breadcrumbEl = document.getElementById("breadcrumb");
+  breadcrumbEl.innerHTML = "";
+  breadcrumbTrail.forEach(sceneId => {
+    const link = document.createElement("button");
+    link.textContent = sceneId;
+    link.className = "breadcrumb-link";
+    link.onclick = () => {
+      current = sceneId;
+      visited.add(sceneId);
+      renderScene();
+    };
+    breadcrumbEl.appendChild(link);
+  });
+}
+
+function renderScene() {
+  const storyEl = document.getElementById("story");
+  const choicesEl = document.getElementById("choices");
+  storyEl.textContent = scenes[current].text;
+  choicesEl.innerHTML = "";
+
+  renderBreadcrumb();
+
+  const currentPhase = getPhaseOfScene(current);
+  if (currentPhase) {
+    const completed = isPhaseCompleted(currentPhase);
+
+    // Se la scena corrente è parte della fase ed è completata (ma non è la scena di attivazione)
+    if (completed && current !== currentPhase.activation && currentPhase.activation) {
+      // Mostra solo bottone per andare alla scena di attivazione
+      const btn = document.createElement("button");
+      btn.className = "choice-btn";
+      btn.textContent = `Vai a ${currentPhase.activation.toUpperCase()}`;
+      btn.onclick = () => {
+        current = currentPhase.activation;
+        visited.add(current);
+        if (!breadcrumbTrail.includes(current)) breadcrumbTrail.push(current);
+        renderScene();
+      };
+      choicesEl.appendChild(btn);
+      return;
+    }
+  }
+
+  // Se la scena è quella di attivazione o scena fuori da fasi, mostra scelte normali
+  const scene = scenes[current];
+  if (scene.choices.length > 0) {
+    scene.choices.forEach(choice => {
+      const btn = document.createElement("button");
+      btn.className = "choice-btn";
+      btn.textContent = choice.text;
+      btn.onclick = () => {
+        current = choice.next;
+        visited.add(current);
+        if (!breadcrumbTrail.includes(current)) breadcrumbTrail.push(current);
+        renderScene();
+      };
+      choicesEl.appendChild(btn);
+    });
+  } else {
+    // Nessuna scelta: torna allo start
+    const btn = document.createElement("button");
+    btn.className = "choice-btn";
+    btn.textContent = "Torna allo start";
+    btn.onclick = () => {
+      current = "start";
+      visited.add(current);
+      if (!breadcrumbTrail.includes(current)) breadcrumbTrail.push(current);
+      renderScene();
+    };
+    choicesEl.appendChild(btn);
+  }
+}
+
+window.onload = () => {
+  renderScene();
+};
+
+      // Funzione typing disattivata per ora
+  /*
+  function typeText(text, el, i = 0) {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      window.typingTimeout = setTimeout(() => {
+        typeText(text, el, i + 1);
+      }, 15);
+    }
+  }
+  */
+
+  // Primo render
+  window.onload = () => {
+    renderScene();
+  };
+</script>
+</body>
+</html>
