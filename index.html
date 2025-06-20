@@ -426,7 +426,11 @@ function renderBreadcrumb() {
 function renderScene() {
   const storyEl = document.getElementById("story");
   const choicesEl = document.getElementById("choices");
-  storyEl.textContent = scenes[current].text;
+  
+  // Inizia con testo vuoto e avvia typing
+  storyEl.textContent = "";
+  typeText(scenes[current].text, storyEl);
+  
   choicesEl.innerHTML = "";
 
   renderBreadcrumb();
@@ -435,9 +439,7 @@ function renderScene() {
   if (currentPhase) {
     const completed = isPhaseCompleted(currentPhase);
 
-    // Se la scena corrente è parte della fase ed è completata (ma non è la scena di attivazione)
     if (completed && current !== currentPhase.activation && currentPhase.activation) {
-      // Mostra solo bottone per andare alla scena di attivazione
       const btn = document.createElement("button");
       btn.className = "choice-btn";
       btn.textContent = `Vai a ${currentPhase.activation.toUpperCase()}`;
@@ -452,7 +454,6 @@ function renderScene() {
     }
   }
 
-  // Se la scena è quella di attivazione o scena fuori da fasi, mostra scelte normali
   const scene = scenes[current];
   if (scene.choices.length > 0) {
     scene.choices.forEach(choice => {
@@ -468,7 +469,6 @@ function renderScene() {
       choicesEl.appendChild(btn);
     });
   } else {
-    // Nessuna scelta: torna allo start
     const btn = document.createElement("button");
     btn.className = "choice-btn";
     btn.textContent = "Torna allo start";
