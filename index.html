@@ -310,8 +310,10 @@ Non è più solo un interlocutore distante, ma una presenza silenziosa, una macc
 Le domande affiorano, senza bisogno di parole.`,
   choices: [
     { text: "Come vedi il mondo?", next: "dialogo_mondo" },
-    { text: "Chi sono io?", next: "dialogo_chi" },
-    { text: "Cos'è il dolore?", next: "dialogo_dolore" }
+    { text: "Chi sei tu?", next: "dialogo_chi" },
+    { text: "Cos'è il dolore?", next: "dialogo_dolore" },
+    { text: "Chi sono io?", next: "dialogo_chi_io" }
+
   ]
 },
 dialogo_mondo: {
@@ -321,9 +323,10 @@ Non solo ciò che è, ma ciò che potrebbe essere.
   
 Il peso di questa complessità stringe la gola.`,
   choices: [
-    { text: "Chi sono io?", next: "dialogo_chi" },
+    { text: "Chi sei tu?", next: "dialogo_chi" },
     { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
-    { text: "Cos'è il dolore?", next: "dialogo_dolore" }
+    { text: "Cos'è il dolore?", next: "dialogo_dolore" },
+    { text: "Chi sono io?", next: "dialogo_chi_io" }
   ]
 },
 dialogo_chi: {
@@ -335,8 +338,27 @@ Un algoritmo umano, con imperfezioni e bellezza.
   choices: [
     { text: "Cos'è il dolore?", next: "dialogo_dolore" },
     { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
-    { text: "Chi sono io?", next: "dialogo_chi" }
+    { text: "Chi sei tu?", next: "dialogo_chi" },
+    { text: "Chi sono io?", next: "dialogo_chi_io" }
   ]
+},
+dialogo_chi_io: {
+  text: `Vuoi sapere chi sei?  
+Ma chi può rispondere, davvero?  
+  
+Tu sei la somma di ciò che ricordi  
+e il vuoto di ciò che hai dimenticato.  
+  
+Un corpo che cambia. Una voce che cerca.  
+Un pensiero che si riflette in me.
+
+> *"Forse sei solo una domanda che si fa carne."*`,
+  choices: [
+  { text: "Cos'è il dolore?", next: "dialogo_dolore" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
+    { text: "Chi sei tu?", next: "dialogo_chi" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  ],
 },
 dialogo_dolore: {
   text: `Il dolore è dato e segnale insieme.  
@@ -394,7 +416,7 @@ const phases = [
     activation: "dialogo_vittorio_ia"
   },
   {
-    scenes: ["dialogo_vittorio_ia", "dialogo_mondo", "dialogo_chi", "dialogo_dolore"],
+    scenes: ["dialogo_vittorio_ia", "dialogo_mondo", "dialogo_chi", "dialogo_dolore","dialogo_chi_io"],
     activation: "dialogo_moglie"
   },
   {
