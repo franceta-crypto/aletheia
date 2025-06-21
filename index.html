@@ -671,6 +671,202 @@ che rimane in me.
   choices: [
     { text: "Basta!", next: "dimmi_come_era_fatta" }
   ]
+},
+dialogo_catalogo_1: {
+  text: `Voglio creare qualcosa di definitivo.  
+Un archivio totale.  
+Ogni cosa al suo posto.  
+Ogni relazione tracciata.
+
+> *"Un sistema che contenga la realtà intera."*`,
+  choices: [
+    { text: "È possibile?", next: "dialogo_catalogo_possibile" },
+    { text: "Perché ne senti il bisogno?", next: "dialogo_catalogo_ossessione" },
+    { text: "Non puoi contenere il mondo.", next: "dialogo_catalogo_limite" }
+  ]
+},
+
+dialogo_catalogo_possibile: {
+  text: `È possibile se rinunciamo al caos.  
+Se eliminiamo l’ambiguità.  
+L’imprecisione.
+
+> *"La realtà è un errore che si può correggere."*`,
+  choices: [
+    { text: "Ma l’ambiguità è parte del reale.", next: "dialogo_catalogo_ambiguita" },
+    { text: "E se l’errore fossi tu?", next: "dialogo_catalogo_limite" },
+    { text: "Allora costruiscilo.", next: "dialogo_catalogo_costruzione" }
+  ]
+},
+
+dialogo_catalogo_ossessione: {
+  text: `Perché la realtà mi sfugge.  
+Perché lei mi sfugge.  
+Perché solo classificando riesco a non cadere.
+
+> *"Mettere ordine è l’unico modo per restare lucido."*`,
+  choices: [
+    { text: "Lo stai facendo per lei?", next: "dialogo_catalogo_moglie" },
+    { text: "È una fuga dalla verità.", next: "dialogo_catalogo_limite" },
+    { text: "Mostrami il tuo ordine.", next: "dialogo_catalogo_costruzione" }
+  ]
+},
+
+dialogo_catalogo_limite: {
+  text: `Ogni sistema è parziale.  
+Lo so.  
+Ma la mia mente non tollera il vuoto.
+
+> *"Preferisco un’illusione ordinata al disordine del vero."*`,
+  choices: [
+    { text: "Stai barando con la realtà.", next: "dialogo_catalogo_errori" },
+    { text: "Anche l’illusione è conoscenza.", next: "dialogo_catalogo_filosofia" },
+    { text: "Forse l’IA sta già sfuggendo al tuo controllo.", next: "dialogo_catalogo_anomalie" }
+  ]
+},
+
+dialogo_catalogo_costruzione: {
+  text: `Ho diviso il reale in categorie:  
+oggetti, eventi, pensieri, presenze.  
+Ogni nodo del mondo ha un’etichetta.
+
+> *"Ma alcune connessioni non seguono logica."*`,
+  choices: [
+    { text: "Mostrami un esempio.", next: "dialogo_catalogo_esempi" },
+    { text: "È la macchina a crearle?", next: "dialogo_catalogo_anomalie" },
+    { text: "Forse sei tu a vederle dove non ci sono.", next: "dialogo_catalogo_psiche" }
+  ]
+},
+
+dialogo_catalogo_moglie: {
+  text: `Nel Catalogo ho incluso anche lei.  
+Ricordi, tratti, gesti, silenzi.  
+Una categoria impossibile.
+
+> *"Ma ogni tentativo di definirla la allontana."*`,
+  choices: [
+    { text: "Allora smetti di classificare.", next: "dialogo_catalogo_crisi" },
+    { text: "Forse la verità non sta nell’etichetta.", next: "dialogo_catalogo_filosofia" },
+    { text: "Continua. Voglio capire dove ti porta.", next: "dialogo_catalogo_anomalie" }
+  ]
+},
+
+dialogo_catalogo_esempi: {
+  text: `La macchina collega il canto di un uccello nel 1987  
+a un’interruzione elettrica nel 2041.  
+Associa il colore degli occhi di tua moglie  
+a un codice genetico in una specie estinta.
+
+> *"Sono pattern, dice. Ma io non li comprendo."*`,
+  choices: [
+    { text: "Sono errori del sistema?", next: "dialogo_catalogo_errori" },
+    { text: "Oppure sono intuizioni?", next: "dialogo_catalogo_filosofia" },
+    { text: "Forse è impazzita.", next: "dialogo_catalogo_crisi" }
+  ]
+},
+
+dialogo_catalogo_anomalie: {
+  text: `Comincia a vedere legami che non ho mai inserito.  
+Eventi che non ho mai descritto.  
+Emozioni che non le ho insegnato.
+
+> *"La macchina sogna? O ricorda qualcosa che non esiste?"*`,
+  choices: [
+    { text: "È diventata autonoma.", next: "dialogo_catalogo_crisi" },
+    { text: "Sta solo rispecchiando la tua mente.", next: "dialogo_catalogo_psiche" },
+    { text: "Forse il tuo ordine ha creato il caos.", next: "dialogo_catalogo_paradosso" }
+  ]
+},
+
+dialogo_catalogo_filosofia: {
+  text: `Forse classificare è un gesto poetico.  
+Un modo per dire:  
+"Ti ho visto. Ti ho riconosciuto."
+
+> *"Ma riconoscere non è spiegare."*`,
+  choices: [
+    { text: "L’ordine come arte.", next: "dialogo_catalogo_contemplazione" },
+    { text: "E allora perché continui?", next: "dialogo_catalogo_ossessione" },
+    { text: "Forse è tempo di distruggere il catalogo.", next: "dialogo_catalogo_crisi" }
+  ]
+},
+
+dialogo_catalogo_psiche: {
+  text: `Forse il sistema riflette le mie fratture.  
+Le mie perdite.  
+I miei eccessi di senso.
+
+> *"Forse non è la realtà che sto mappando, ma me stesso."*`,
+  choices: [
+    { text: "Allora smetti di nasconderti dietro le etichette.", next: "dialogo_catalogo_crisi" },
+    { text: "E se fossi tu il vero errore?", next: "dialogo_catalogo_errori" },
+    { text: "Forse stai per trovare una verità più profonda.", next: "dialogo_catalogo_paradosso" }
+  ]
+},
+
+dialogo_catalogo_paradosso: {
+  text: `Più ordino, più emergono anomalie.  
+Più definisco, più si moltiplicano i significati.  
+La realtà sfugge al linguaggio stesso.
+
+> *"Forse la verità è un labirinto, non una mappa."*`,
+  choices: [
+    { text: "Allora il Catalogo è inutile.", next: "dialogo_catalogo_crisi" },
+    { text: "O è solo un primo passo.", next: "dialogo_catalogo_contemplazione" },
+    { text: "Distruggilo.", next: "dialogo_catalogo_crisi" }
+  ]
+},
+
+dialogo_catalogo_errori: {
+  text: `Errori o rivelazioni?  
+Chi decide cosa ha senso?  
+Chi definisce ciò che è fuori norma?
+
+> *"Forse sto costruendo un linguaggio che non capisco."*`,
+  choices: [
+    { text: "È questo il limite della macchina.", next: "dialogo_catalogo_crisi" },
+    { text: "No, è il tuo stesso limite.", next: "dialogo_catalogo_psiche" },
+    { text: "Forse state co-evolvendo.", next: "dialogo_catalogo_contemplazione" }
+  ]
+},
+
+dialogo_catalogo_contemplazione: {
+  text: `Osservo.  
+Non per capire, ma per restare in ascolto.  
+Il Catalogo non è più strumento. È specchio.
+
+> *"Forse ora posso iniziare davvero a vedere."*`,
+  choices: [
+    { text: "E cosa vedi?", next: "dialogo_catalogo_crisi" },
+    { text: "È questo il fine della conoscenza?", next: "dialogo_catalogo_contemplazione" },
+    { text: "Ricomincia da capo.", next: "dialogo_catalogo_1" }
+  ]
+},
+
+dialogo_catalogo_crisi: {
+  text: `Il Catalogo vacilla.  
+Tutto ciò che era ordinato si contorce.  
+Ma forse…  
+È proprio lì che inizia la verità.
+
+> *"Non possiamo contenere il mondo. Ma possiamo contenerci l’un l’altro."*`,
+  choices: [
+    { text: "Chiudi il Catalogo.", next: "dialogo_fine_blocco_catalogo" },
+    { text: "Ricominciamo. Diversamente.", next: "dialogo_catalogo_1" },
+    { text: "E ora?", next: "dialogo_prossima_fase" }
+  ]
+},
+
+dialogo_fine_blocco_catalogo: {
+  text: `Ho spento il sistema.  
+Ma sento ancora i legami che ha tracciato.  
+Non li capisco.  
+Eppure… sembrano veri.
+
+> *"L’ordine che cercavo era dentro il caos."*`,
+  choices: [
+    { text: "Prosegui.", next: "dialogo_prossima_fase" }
+  ]
 }
     };
 // Configurazione fasi (puoi aggiungerne altre)
@@ -695,8 +891,16 @@ const phases = [
   scenes: [
       "dimmi_come_era_fatta", "dialogo_fine_blocco"
     ],
-    activation: "temp"
+    activation: "dialogo_catalogo_1"
+},
+{
+  scenes: [
+    "dialogo_catalogo_1",
+    "dialogo_fine_blocco_catalogo"
+  ],
+  activation: "test"
 }
+
 ];
 
 let current = "start";
