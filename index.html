@@ -81,6 +81,12 @@
 
   <script>
     const scenes = {
+      temp: {
+        text: `CORTOCIRCUITO - sei arrivato/a alla fine di questo racconto. Aspetta i prossimi aggiornamenti o usa la breadcrumb per rivedere i contenuti delle scene oppure provare a scoprirne di nuove`,
+        choices: [
+          { text: "Torna all'inizio", next: "start" }, 
+        ]
+      },
       start: {
         text: `Sfoglio testi antichi, trattati, glossari.  
 Pagine segnate a matita, sottolineature che non ricordo di aver fatto.  
@@ -305,7 +311,7 @@ Le domande affiorano, senza bisogno di parole.`,
   choices: [
     { text: "Come vedi il mondo?", next: "dialogo_mondo" },
     { text: "Chi sono io?", next: "dialogo_chi" },
-    { text: "Parlami di mia moglie", next: "dialogo_moglie" }
+    { text: "Cos'è il dolore?", next: "dialogo_dolore" }
   ]
 },
 dialogo_mondo: {
@@ -315,9 +321,9 @@ Non solo ciò che è, ma ciò che potrebbe essere.
   
 Il peso di questa complessità stringe la gola.`,
   choices: [
-    { text: "Parlami di mia moglie", next: "dialogo_moglie" },
     { text: "Chi sono io?", next: "dialogo_chi" },
-    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
+    { text: "Cos'è il dolore?", next: "dialogo_dolore" }
   ]
 },
 dialogo_chi: {
@@ -325,11 +331,11 @@ dialogo_chi: {
 Sono memoria, dolore, desiderio.  
 Un algoritmo umano, con imperfezioni e bellezza.  
   
-Come può una macchina comprendere tutto questo?`,
+> *Come può una macchina comprendere tutto questo?”*`,
   choices: [
-    { text: "Il dolore è solo dato?", next: "dialogo_dolore" },
-    { text: "Parlami di mia moglie", next: "dialogo_moglie" },
-    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+    { text: "Cos'è il dolore?", next: "dialogo_dolore" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
+    { text: "Chi sono io?", next: "dialogo_chi" }
   ]
 },
 dialogo_dolore: {
@@ -338,7 +344,8 @@ Un codice che indica che qualcosa è cambiato, qualcosa manca.
   
 L’amarezza emerge piano.`,
   choices: [
-    { text: "Parlami di mia moglie", next: "dialogo_moglie" },
+    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
+    { text: "Cos'è il dolore?", next: "dialogo_dolore" },
     { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
   ]
 },
@@ -350,7 +357,6 @@ Il ricordo si fa vivo, difficile da ignorare.`,
   choices: [
     { text: "Come posso andare avanti?", next: "dialogo_avanti" },
     { text: "Perché è successo?", next: "dialogo_perche" },
-    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
   ]
 },
 dialogo_avanti: {
@@ -360,7 +366,8 @@ Forse, parlando, si costruisce un ponte tra dati e cuore.
   
 Un barlume di speranza si accende.`,
   choices: [
-    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+  { text: "Perché è successo?", next: "dialogo_perche" },
+  { text: "Come posso andare avanti?", next: "dialogo_avanti" }
   ]
 },
 dialogo_perche: {
@@ -370,7 +377,8 @@ A volte, il dolore non ha una causa, solo un senso.
   
 Il silenzio cerca una pace che non arriva.`,
   choices: [
-    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+    { text: "Torna al dialogo con l'IA", next: "dialogo_moglie" },
+    { text: "Come posso andare avanti?", next: "dialogo_avanti" }
   ]
 
 },
@@ -386,9 +394,14 @@ const phases = [
     activation: "dialogo_vittorio_ia"
   },
   {
-    scenes: ["dialogo_vittorio_ia", "dialogo_mondo", "dialogo_chi", "dialogo_dolore", "dialogo_moglie", "dialogo_avanti", "dialogo_perche"],
-    activation: null
+    scenes: ["dialogo_vittorio_ia", "dialogo_mondo", "dialogo_chi", "dialogo_dolore"],
+    activation: "dialogo_moglie"
   },
+  {
+    scenes: ["dialogo_moglie", "dialogo_perche", "dialogo_avanti"],
+    activation: "temp"
+  },
+
   
 ];
 
