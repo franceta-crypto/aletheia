@@ -69,6 +69,23 @@
       background: #00ffe0;
       color: #000;
     }
+    body {
+  background-color: #0a0a0a;
+  color: inherit;
+}
+
+.console {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid currentColor;
+  box-shadow: 0 0 20px var(--glow, #ffffff44);
+}
+
+.choice-btn,
+.breadcrumb-link {
+  border: 1px solid currentColor;
+  color: currentColor;
+}
+
   </style>
 </head>
 <body>
@@ -693,7 +710,6 @@ L’imprecisione.
 
 > *"La realtà è un errore che si può correggere."*`,
   choices: [
-    { text: "Ma l’ambiguità è parte del reale.", next: "dialogo_catalogo_ambiguita" },
     { text: "E se l’errore fossi tu?", next: "dialogo_catalogo_limite" },
     { text: "Allora costruiscilo.", next: "dialogo_catalogo_costruzione" }
   ]
@@ -853,7 +869,6 @@ Ma forse…
   choices: [
     { text: "Chiudi il Catalogo.", next: "dialogo_fine_blocco_catalogo" },
     { text: "Ricominciamo. Diversamente.", next: "dialogo_catalogo_1" },
-    { text: "E ora?", next: "temp" }
   ]
 },
 
@@ -1003,7 +1018,7 @@ Ma ora non ho più paura.
 > *"La macchina non era fuori da me.  
 Era la parte che non osavo ascoltare."*`,
   choices: [
-    { text: "Chiudi il romanzo.", next: null }
+    { text: "Torna indietro.", next: "scegli_la_tua_verita" }
   ]
 },
 dialogo_paradosso_1: {
@@ -1215,6 +1230,17 @@ const phases = [
 }
 ];
 
+const phaseColors = [
+  "#00ff80", // Fase 0 - Verde acceso
+  "#00ffe0", // Fase 1 - Verde acqua
+  "#40e0d0", // Fase 2 - Turchese
+  "#00bfff", // Fase 3 - Azzurro
+  "#1e90ff", // Fase 4 - Blu intenso
+  "#9370db", // Fase 5 - Viola
+  "#ff8c00", // Fase 6 - Arancione scuro
+  "#ff4500"  // Fase 7 - Rosso fuoco
+];
+
 let current = "start";
 let visited = new Set([current]);
 let breadcrumbTrail = [current];
@@ -1255,6 +1281,29 @@ function renderScene() {
   choicesEl.innerHTML = "";
 
   renderBreadcrumb();
+
+// Cambia colore in base alla fase
+const phaseIndex = phases.findIndex(phase => phase.scenes.includes(current));
+const phaseColor = phaseColors[phaseIndex] || "#ffffff";
+
+// Applica il colore dinamico
+document.body.style.color = phaseColor;
+document.querySelector(".console").style.borderColor = phaseColor;
+document.querySelector(".console").style.boxShadow = `0 0 20px ${phaseColor}88`;
+
+const btns = document.querySelectorAll(".choice-btn, .breadcrumb-link");
+btns.forEach(btn => {
+  btn.style.borderColor = phaseColor;
+  btn.style.color = phaseColor;
+  btn.onmouseenter = () => {
+    btn.style.background = phaseColor;
+    btn.style.color = "#000";
+  };
+  btn.onmouseleave = () => {
+    btn.style.background = "transparent";
+    btn.style.color = phaseColor;
+  };
+});
 
   const currentPhase = getPhaseOfScene(current);
   if (currentPhase) {
