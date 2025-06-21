@@ -368,7 +368,8 @@ L’amarezza emerge piano.`,
   choices: [
     { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
     { text: "Cos'è il dolore?", next: "dialogo_dolore" },
-    { text: "Torna al pensiero", next: "dialogo_vittorio_ia" }
+    { text: "Chi sei tu?", next: "dialogo_chi" },
+    { text: "Chi sono io?", next: "dialogo_chi_io" },
   ]
 },
 dialogo_moglie: {
@@ -671,7 +672,7 @@ const phases = [
   },
   {
     scenes: ["dialogo_moglie", "dialogo_perche", "dialogo_avanti"],
-    activation: "temp"
+    activation: "dialogo_moglie_1"
   },
   {
   scenes: [
