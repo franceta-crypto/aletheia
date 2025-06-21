@@ -85,22 +85,10 @@
   border: 1px solid currentColor;
   color: currentColor;
 }
-#background-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0.08;
-  pointer-events: none;
-}
-
 
   </style>
 </head>
 <body>
-  <canvas id="background-canvas"></canvas>
   <h1>ALETHEIA - un romanzo ipertestuale di Francesco Tamborrino</h1>
   <div id="breadcrumb" style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
   <div class="console">
@@ -1282,143 +1270,6 @@ function renderBreadcrumb() {
     breadcrumbEl.appendChild(link);
   });
 }
-function drawBackground(phaseIndex) {
-  const canvas = document.getElementById('background-canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Imposta il colore della fase come stroke
-  ctx.strokeStyle = phaseColors[phaseIndex] || "#00ffe0";
-  ctx.lineWidth = 0.4;
-
-  switch (phaseIndex) {
-    case 0: drawGrid(ctx); break;
-    case 1: drawNeuralNet(ctx); break;
-    case 2: drawMandala(ctx); break;
-    case 3: drawTreeStructure(ctx); break;
-    case 4: drawRhizome(ctx); break;
-    case 5: drawGlitchPattern(ctx); break;
-    case 6: drawFractal(ctx); break;
-    default: break;
-  }
-}
-
-function drawGrid(ctx) {
-  const spacing = 40;
-  for (let x = 0; x < ctx.canvas.width; x += spacing) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, ctx.canvas.height);
-    ctx.stroke();
-  }
-  for (let y = 0; y < ctx.canvas.height; y += spacing) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(ctx.canvas.width, y);
-    ctx.stroke();
-  }
-}
-
-function drawNeuralNet(ctx) {
-  const nodes = 60;
-  for (let i = 0; i < nodes; i++) {
-    const x = Math.random() * ctx.canvas.width;
-    const y = Math.random() * ctx.canvas.height;
-    ctx.beginPath();
-    ctx.arc(x, y, 1.5, 0, Math.PI * 2);
-    ctx.stroke();
-    for (let j = 0; j < 3; j++) {
-      const x2 = x + Math.random() * 80 - 40;
-      const y2 = y + Math.random() * 80 - 40;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x2, y2);
-      ctx.stroke();
-    }
-  }
-}
-
-function drawMandala(ctx) {
-  const centerX = ctx.canvas.width / 2;
-  const centerY = ctx.canvas.height / 2;
-  for (let i = 0; i < 36; i++) {
-    const angle = (i * 10 * Math.PI) / 180;
-    const r = 120 + Math.sin(i) * 60;
-    const x = centerX + Math.cos(angle) * r;
-    const y = centerY + Math.sin(angle) * r;
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.lineTo(x, y);
-    ctx.stroke();
-  }
-}
-
-function drawTreeStructure(ctx) {
-  function drawBranch(x, y, angle, depth) {
-    if (depth === 0) return;
-    const length = depth * 10;
-    const x2 = x + Math.cos(angle) * length;
-    const y2 = y + Math.sin(angle) * length;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    drawBranch(x2, y2, angle - 0.5, depth - 1);
-    drawBranch(x2, y2, angle + 0.5, depth - 1);
-  }
-  drawBranch(ctx.canvas.width / 2, ctx.canvas.height, -Math.PI / 2, 6);
-}
-
-function drawRhizome(ctx) {
-  for (let i = 0; i < 25; i++) {
-    const x = Math.random() * ctx.canvas.width;
-    const y = Math.random() * ctx.canvas.height;
-    const len = 30 + Math.random() * 50;
-    const angle = Math.random() * 2 * Math.PI;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + Math.cos(angle) * len, y + Math.sin(angle) * len);
-    ctx.stroke();
-  }
-}
-
-function drawGlitchPattern(ctx) {
-  for (let i = 0; i < 100; i++) {
-    const x = Math.random() * ctx.canvas.width;
-    const y = Math.random() * ctx.canvas.height;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + Math.random() * 20 - 10, y + Math.random() * 2 - 1);
-    ctx.stroke();
-  }
-}
-
-function drawFractal(ctx) {
-  let x = 0, y = 0;
-  for (let i = 0; i < 10000; i++) {
-    const r = Math.random();
-    let xNew, yNew;
-    if (r < 0.01) {
-      xNew = 0;
-      yNew = 0.16 * y;
-    } else if (r < 0.86) {
-      xNew = 0.85 * x + 0.04 * y;
-      yNew = -0.04 * x + 0.85 * y + 1.6;
-    } else if (r < 0.93) {
-      xNew = 0.2 * x - 0.26 * y;
-      yNew = 0.23 * x + 0.22 * y + 1.6;
-    } else {
-      xNew = -0.15 * x + 0.28 * y;
-      yNew = 0.26 * x + 0.24 * y + 0.44;
-    }
-    x = xNew;
-    y = yNew;
-    ctx.fillRect(ctx.canvas.width / 2 + x * 60, ctx.canvas.height - y * 60, 1, 1);
-  }
-}
-
 function renderScene() {
   const storyEl = document.getElementById("story");
   const choicesEl = document.getElementById("choices");
@@ -1430,7 +1281,6 @@ function renderScene() {
   choicesEl.innerHTML = "";
 
   renderBreadcrumb();
-  drawBackground(phaseIndex);
 
 // Cambia colore in base alla fase
 const phaseIndex = phases.findIndex(phase => phase.scenes.includes(current));
