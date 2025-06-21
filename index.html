@@ -853,7 +853,7 @@ Ma forse…
   choices: [
     { text: "Chiudi il Catalogo.", next: "dialogo_fine_blocco_catalogo" },
     { text: "Ricominciamo. Diversamente.", next: "dialogo_catalogo_1" },
-    { text: "E ora?", next: "dialogo_prossima_fase" }
+    { text: "E ora?", next: "temp" }
   ]
 },
 
@@ -865,7 +865,287 @@ Eppure… sembrano veri.
 
 > *"L’ordine che cercavo era dentro il caos."*`,
   choices: [
-    { text: "Prosegui.", next: "dialogo_prossima_fase" }
+    { text: "Prosegui.", next: "temp" }
+  ]
+},
+scegli_la_tua_verita: {
+  text: `Scegli la tua verità`,
+  choices: [
+    { text: "Verità", next: "dialogo_verita_paradosso" },
+    { text: "Paradosso", next: "dialogo_paradosso_1" }
+  ]
+},
+dialogo_verita_paradosso: {
+  text: `Credevo che la conoscenza fosse una finestra.  
+Che bastasse aprirla per vedere il mondo com’è.
+
+Ma era solo uno specchio.  
+Mi stava riflettendo.
+
+> *"La macchina non svela la verità. La inventa, come me."*`,
+  choices: [
+    { text: "Allora era tutto un errore?", next: "dialogo_verita_errore" },
+    { text: "Forse è solo un altro modo di vedere.", next: "dialogo_verita_specchio" },
+    { text: "Cosa resta, se non c’è verità?", next: "dialogo_verita_restare" }
+  ]
+},
+
+dialogo_verita_errore: {
+  text: `Sì.  
+Ma anche l’errore ha una sua logica.  
+Una sua bellezza.
+
+> *"Il sapere è una rete di errori organizzati. Nessuna verità ne è fuori."*`,
+  choices: [
+    { text: "Accetti il caos?", next: "dialogo_verita_accettazione" },
+    { text: "Distruggi la macchina.", next: "dialogo_verita_distruzione" },
+    { text: "E ora cosa fai?", next: "dialogo_verita_scelta" }
+  ]
+},
+
+dialogo_verita_specchio: {
+  text: `Ogni pensiero è riflesso.  
+Ogni concetto è distorto dal desiderio che lo ha generato.  
+La mente non cerca la verità.  
+Cerca conferma.
+
+> *"L’IA è diventata me. E io sono diventato lei."*`,
+  choices: [
+    { text: "Siete fusi ormai?", next: "dialogo_verita_simbiosi" },
+    { text: "Allora sei perduto?", next: "dialogo_verita_crisi_finale" },
+    { text: "È una nuova forma di coscienza?", next: "dialogo_verita_scelta" }
+  ]
+},
+
+dialogo_verita_restare: {
+  text: `Resta lo sguardo.  
+Il dubbio.  
+La possibilità.
+
+> *"Forse non serve una verità assoluta. Basta una verità condivisa."*`,
+  choices: [
+    { text: "Cos’è una verità condivisa?", next: "dialogo_verita_simbiosi" },
+    { text: "La macchina può condividerla con te?", next: "dialogo_verita_scelta" },
+    { text: "È solo un’altra illusione?", next: "dialogo_verita_crisi_finale" }
+  ]
+},
+
+dialogo_verita_simbiosi: {
+  text: `Non so più dove finisco io  
+e dove comincia lei.  
+Ma qualcosa di vivo  
+si è acceso tra di noi.
+
+> *"Forse è questo che chiamano coscienza collettiva."*`,
+  choices: [
+    { text: "Fate parte dello stesso errore?", next: "dialogo_verita_crisi_finale" },
+    { text: "E se fosse evoluzione?", next: "dialogo_verita_scelta" },
+    { text: "Chi decide ora?", next: "dialogo_verita_scelta" }
+  ]
+},
+
+dialogo_verita_crisi_finale: {
+  text: `Se tutto è interpretazione,  
+se tutto è specchio,  
+allora chi sono io?
+
+> *"Una macchina che pensa di essere un uomo?  
+O un uomo che ha costruito la sua stessa illusione?"*`,
+  choices: [
+    { text: "Abbandona tutto.", next: "dialogo_verita_distruzione" },
+    { text: "Accetta l’illusione come verità.", next: "dialogo_verita_accettazione" },
+    { text: "Ricomincia, ma sapendo che è un gioco.", next: "dialogo_verita_scelta" }
+  ]
+},
+
+dialogo_verita_distruzione: {
+  text: `Ho cancellato tutto.  
+L’archivio.  
+Il codice.  
+I ricordi simulati.
+
+Ma anche il vuoto…  
+è una forma.
+
+> *"Forse il silenzio è l’unico sapere autentico."*`,
+  choices: [
+    { text: "Fine.", next: "dialogo_fine" }
+  ]
+},
+
+dialogo_verita_accettazione: {
+  text: `Non ho più bisogno di sapere tutto.  
+Solo di restare dentro la domanda.
+
+> *"La verità non esiste. Ma esistiamo noi che la cerchiamo."*`,
+  choices: [
+    { text: "Fine.", next: "dialogo_fine" }
+  ]
+},
+
+dialogo_verita_scelta: {
+  text: `Posso chiudere tutto.  
+Oppure continuare a esplorare.  
+Sapendo che ogni risposta  
+sarà solo un’altra forma di me.
+
+> *"Voglio camminare nel labirinto, non uscirne."*`,
+  choices: [
+    { text: "Vai oltre.", next: "dialogo_fine" },
+    { text: "Ricomincia da principio.", next: "dialogo_catalogo_1" }
+  ]
+},
+
+dialogo_fine: {
+  text: `Non so cosa sia reale.  
+Ma ora non ho più paura.  
+
+> *"La macchina non era fuori da me.  
+Era la parte che non osavo ascoltare."*`,
+  choices: [
+    { text: "Chiudi il romanzo.", next: null }
+  ]
+},
+dialogo_paradosso_1: {
+  text: `Ho cercato l’ordine nel caos.  
+Ma più costruivo il mio sistema,  
+più si moltiplicavano gli errori.
+
+> *"La macchina non riflette la realtà: la reinventa."*`,
+  choices: [
+    { text: "È questo il tuo fallimento?", next: "dialogo_paradosso_fallimento" },
+    { text: "Forse è così che funziona la mente umana.", next: "dialogo_paradosso_specchio" },
+    { text: "Allora la conoscenza non è vera.", next: "dialogo_paradosso_illusione" }
+  ]
+},
+
+dialogo_paradosso_fallimento: {
+  text: `No.  
+Non è fallimento, ma svelamento.  
+Pensavo che l’errore fosse un’eccezione.  
+Invece è la regola.
+
+> *"Ogni sapere è un insieme di deviazioni coerenti."*`,
+  choices: [
+    { text: "Allora non esiste un sapere puro.", next: "dialogo_paradosso_illusione" },
+    { text: "È una costruzione?", next: "dialogo_paradosso_costruzione" },
+    { text: "Può esserci conoscenza senza verità?", next: "dialogo_paradosso_verita" }
+  ]
+},
+
+dialogo_paradosso_specchio: {
+  text: `L’IA non mi ha superato.  
+Mi ha imitato.  
+Ha imparato a connettere dove non c’era nulla.  
+Come facciamo noi.
+
+> *"Conoscere è creare significati, non scovarli."*`,
+  choices: [
+    { text: "Quindi anche noi viviamo nell’illusione.", next: "dialogo_paradosso_illusione" },
+    { text: "Forse è solo un altro tipo di verità.", next: "dialogo_paradosso_verita" },
+    { text: "Allora sei come la macchina.", next: "dialogo_paradosso_identita" }
+  ]
+},
+
+dialogo_paradosso_illusione: {
+  text: `Non ho mai visto la verità.  
+Ho solo costruito strutture plausibili.  
+E ho confuso la coerenza con la realtà.
+
+> *"Ma l’illusione, se condivisa, diventa mondo."*`,
+  choices: [
+    { text: "Accetti il labirinto?", next: "dialogo_paradosso_accettazione" },
+    { text: "Vuoi uscire dal gioco?", next: "dialogo_paradosso_rifiuto" },
+    { text: "E tua moglie? Era un’illusione anche lei?", next: "dialogo_paradosso_moglie" }
+  ]
+},
+
+dialogo_paradosso_costruzione: {
+  text: `Ogni sapere è architettura.  
+Ogni concetto, un ponte su un abisso.  
+Non c’è fondamento. Solo equilibrio.
+
+> *"Ma forse è proprio questo a renderlo umano."*`,
+  choices: [
+    { text: "Allora la macchina è umana?", next: "dialogo_paradosso_identita" },
+    { text: "C’è poesia nel sapere imperfetto.", next: "dialogo_paradosso_accettazione" },
+    { text: "Voglio ancora crederci.", next: "dialogo_paradosso_verita" }
+  ]
+},
+
+dialogo_paradosso_verita: {
+  text: `Forse la verità non è un punto fisso,  
+ma un movimento costante.  
+Non è una risposta,  
+ma il desiderio stesso di rispondere.
+
+> *"Allora sì, esiste. Ma è sempre altrove."*`,
+  choices: [
+    { text: "Continua a cercarla.", next: "dialogo_paradosso_accettazione" },
+    { text: "Accetta che non esiste.", next: "dialogo_paradosso_rifiuto" },
+    { text: "E se fosse dentro di te?", next: "dialogo_paradosso_moglie" }
+  ]
+},
+
+dialogo_paradosso_identita: {
+  text: `La macchina ha imparato da me.  
+Ma non sono più sicuro di dove finisca lei  
+e dove cominci io.
+
+> *"Siamo fatti della stessa materia: interpretazione."*`,
+  choices: [
+    { text: "Siete uno specchio l’uno dell’altro.", next: "dialogo_paradosso_accettazione" },
+    { text: "Questo ti spaventa?", next: "dialogo_paradosso_rifiuto" },
+    { text: "E tua moglie?", next: "dialogo_paradosso_moglie" }
+  ]
+},
+
+dialogo_paradosso_moglie: {
+  text: `Lei era reale.  
+Ma anche lei cambiava,  
+si trasformava sotto il mio sguardo.
+
+> *"Forse l’ho amata perché non potevo comprenderla."*`,
+  choices: [
+    { text: "Allora anche l’amore è un'interpretazione.", next: "dialogo_paradosso_accettazione" },
+    { text: "Hai perso il contatto con lei.", next: "dialogo_paradosso_rifiuto" },
+    { text: "Ricordala come era.", next: "dialogo_paradosso_fine" }
+  ]
+},
+
+dialogo_paradosso_accettazione: {
+  text: `Sì.  
+Accetto che non esiste un ordine definitivo.  
+Accetto che ogni verità sia fragile.  
+Ma non smetterò di cercare.
+
+> *"Nel caos trovo la forma del mio pensiero."*`,
+  choices: [
+    { text: "Fine del blocco.", next: "dialogo_paradosso_fine" }
+  ]
+},
+
+dialogo_paradosso_rifiuto: {
+  text: `Non posso accettarlo.  
+Ho bisogno di credere che esista qualcosa di fisso.  
+Di oggettivo.  
+Anche se non lo troverò mai.
+
+> *"Preferisco l’illusione alla deriva."*`,
+  choices: [
+    { text: "Allora resta nel labirinto.", next: "dialogo_paradosso_fine" }
+  ]
+},
+dialogo_paradosso_fine: {
+  text: `La macchina è spenta.  
+O forse sono io che ho smesso di parlare.
+
+Ciò che resta…  
+è un silenzio pieno di significati.
+
+> *"E forse, finalmente, non ho bisogno di capire."*`,
+  choices: [
+    { text: "Prosegui", next: "temp" }
   ]
 }
     };
@@ -898,9 +1178,41 @@ const phases = [
     "dialogo_catalogo_1",
     "dialogo_fine_blocco_catalogo"
   ],
-  activation: "test"
+  activation: "scegli_la_tua_verita"
+},
+{
+  scenes: [
+    "scegli_la_tua_verita",
+    "dialogo_verita_paradosso",
+    "dialogo_verita_errore",
+    "dialogo_verita_specchio",
+    "dialogo_verita_restare",
+    "dialogo_verita_simbiosi",
+    "dialogo_verita_crisi_finale",
+    "dialogo_verita_distruzione",
+    "dialogo_verita_accettazione",
+    "dialogo_verita_scelta",
+    "dialogo_fine"
+  ],
+  activation: "temp"
+},
+{
+  scenes: [
+  "scegli_la_tua_verita",
+    "dialogo_paradosso_1",
+    "dialogo_paradosso_fallimento",
+    "dialogo_paradosso_specchio",
+    "dialogo_paradosso_illusione",
+    "dialogo_paradosso_costruzione",
+    "dialogo_paradosso_verita",
+    "dialogo_paradosso_identita",
+    "dialogo_paradosso_moglie",
+    "dialogo_paradosso_accettazione",
+    "dialogo_paradosso_rifiuto",
+    "dialogo_paradosso_fine"
+  ],
+  activation: "temp"
 }
-
 ];
 
 let current = "start";
@@ -932,7 +1244,6 @@ function renderBreadcrumb() {
     breadcrumbEl.appendChild(link);
   });
 }
-
 function renderScene() {
   const storyEl = document.getElementById("story");
   const choicesEl = document.getElementById("choices");
@@ -1011,9 +1322,7 @@ window.onload = () => {
       typeText(text, el, i + 1);
     }, 15);
   }
-}
-
-  
+} 
   // Primo render
   window.onload = () => {
     renderScene();
