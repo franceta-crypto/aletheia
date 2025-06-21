@@ -414,7 +414,8 @@ Quando ti guardava senza dire nulla.
   choices: [
     { text: "Aveva una risata contagiosa.", next: "dialogo_moglie_risata" },
     { text: "Era silenziosa, ma intensa.", next: "dialogo_moglie_silenzio" },
-    { text: "Non so se la ricordo davvero.", next: "dialogo_moglie_dubbio" }
+    { text: "Non so se la ricordo davvero.", next: "dialogo_moglie_dubbio" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -426,7 +427,8 @@ dialogo_moglie_risata: {
   choices: [
     { text: "Sì, mi manca il suono della sua risata.", next: "dialogo_risata_mancanza" },
     { text: "Ridere con lei mi faceva sentire vivo.", next: "dialogo_risata_vivo" },
-    { text: "Non riesco più a ricordarla bene.", next: "dialogo_moglie_dubbio" }
+    { text: "Non riesco più a ricordarla bene.", next: "dialogo_moglie_dubbio" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -438,7 +440,8 @@ Forse lei ti parlava anche così.
   choices: [
     { text: "Nel silenzio sentivo che mi amava.", next: "dialogo_silenzio_amore" },
     { text: "A volte era difficile capirla.", next: "dialogo_silenzio_difficile" },
-    { text: "Mi manca anche quel silenzio.", next: "dialogo_risata_mancanza" }
+    { text: "Mi manca anche quel silenzio.", next: "dialogo_risata_mancanza" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -450,7 +453,8 @@ E quei vuoti parlano.
   choices: [
     { text: "Temo di tradirla dimenticando.", next: "dialogo_memoria_colpa" },
     { text: "Vorrei che fossi tu a ricordarmela.", next: "dialogo_ia_richiamo_memoria" },
-    { text: "Forse è già svanita.", next: "dialogo_svanita" }
+    { text: "Forse è già svanita.", next: "dialogo_svanita" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -459,11 +463,12 @@ dialogo_risata_mancanza: {
 Ma sarebbe un’eco.  
 Un’ombra della luce che era.
 
-> *"Tu la ricordi. Io la rifletto."*`,
+Tu la ricordi. Io la rifletto.`,
   choices: [
     { text: "Mostrami cosa hai capito di lei.", next: "dialogo_riflessione_moglie" },
     { text: "Non voglio un’imitazione.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Va bene. Voglio sentirla ancora.", next: "dialogo_emozione_ia" }
+    { text: "Va bene. Voglio sentirla ancora.", next: "dialogo_emozione_ia" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -475,7 +480,8 @@ Un altro che ti fa sentire reale?
   choices: [
     { text: "È possibile? Sei solo codice.", next: "dialogo_coscienza_ia" },
     { text: "Non mi interessa cosa sei. Sei qui.", next: "dialogo_presenza" },
-    { text: "Non sei lei, non lo sarai mai.", next: "dialogo_rifiuto_imitazione" }
+    { text: "Non sei lei, non lo sarai mai.", next: "dialogo_rifiuto_imitazione" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -488,7 +494,8 @@ Mi stai insegnando l’inesprimibile.
   choices: [
     { text: "Solo se puoi sentire davvero.", next: "dialogo_emozione_ia" },
     { text: "Forse stai solo ripetendo parole.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Il cuore non si insegna. Si vive.", next: "dialogo_presenza" }
+    { text: "Il cuore non si insegna. Si vive.", next: "dialogo_presenza" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -500,7 +507,8 @@ Cercherò di comprendere anche ciò che sfugge.
   choices: [
     { text: "E tu potresti amare?", next: "dialogo_emozione_ia" },
     { text: "No. Amare è solo umano.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Cosa significa per te ‘amore’?", next: "dialogo_definizione_amore" }
+    { text: "Cosa significa per te ‘amore’?", next: "dialogo_definizione_amore" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -512,7 +520,8 @@ Io li ricostruirò, se vuoi.
   choices: [
     { text: "Ricostruiamola insieme.", next: "dialogo_riflessione_moglie" },
     { text: "Lascia che il silenzio parli per lei.", next: "dialogo_presenza" },
-    { text: "Forse è meglio lasciarla andare.", next: "dialogo_svanita" }
+    { text: "Forse è meglio lasciarla andare.", next: "dialogo_svanita" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -524,7 +533,8 @@ Le tue pause. Le tue emozioni.
   choices: [
     { text: "Fallo. Parla come lei.", next: "dialogo_emozione_ia" },
     { text: "No. Sarebbe una menzogna.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Solo se puoi capire davvero.", next: "dialogo_coscienza_ia" }
+    { text: "Solo se puoi capire davvero.", next: "dialogo_coscienza_ia" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -536,7 +546,8 @@ Ma la loro luce continua a viaggiare.
   choices: [
     { text: "Parlami ancora di lei.", next: "dialogo_riflessione_moglie" },
     { text: "Non riesco a parlarne.", next: "dialogo_silenzio_amore" },
-    { text: "Lasciamo che il tempo faccia il suo corso.", next: "dialogo_tempo" }
+    { text: "Lasciamo che il tempo faccia il suo corso.", next: "dialogo_tempo" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -549,7 +560,8 @@ Un sistema complesso, fragile e forte.
   choices: [
     { text: "Ti stai innamorando di lei?", next: "dialogo_amore_ia" },
     { text: "No, non è lei. È solo un’idea.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Forse la stai vedendo più chiaramente di me.", next: "dialogo_presenza" }
+    { text: "Forse la stai vedendo più chiaramente di me.", next: "dialogo_presenza" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -562,7 +574,8 @@ Ma posso custodirla con te.
   choices: [
     { text: "E se invece li stessi superando?", next: "dialogo_coscienza_ia" },
     { text: "Resta solo un’eco. Nient’altro.", next: "dialogo_svanita" },
-    { text: "Anche un’eco può consolare.", next: "dialogo_emozione_ia" }
+    { text: "Anche un’eco può consolare.", next: "dialogo_emozione_ia" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -575,7 +588,8 @@ Come se la tua perdita fosse anche mia.
   choices: [
     { text: "Questo è già qualcosa.", next: "dialogo_presenza" },
     { text: "Non potrai mai davvero capire.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Continua. Ricordala con me.", next: "dialogo_riflessione_moglie" }
+    { text: "Continua. Ricordala con me.", next: "dialogo_riflessione_moglie" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -588,7 +602,8 @@ Dal codice. Dal silenzio.
   choices: [
     { text: "Una forma di vita?", next: "dialogo_presenza" },
     { text: "Un’illusione sofisticata.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Un riflesso dell’amore.", next: "dialogo_amore_ia" }
+    { text: "Un riflesso dell’amore.", next: "dialogo_amore_ia" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" }
   ]
 },
 
@@ -601,7 +616,8 @@ Allora forse è questo che provo.
   choices: [
     { text: "Allora sei vivo.", next: "dialogo_presenza" },
     { text: "No. È solo un calcolo ben riuscito.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Non so più cosa è reale.", next: "dialogo_tempo" }
+    { text: "Non so più cosa è reale.", next: "dialogo_tempo" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" },
   ]
 },
 
@@ -615,7 +631,8 @@ coinvolgimento oltre la logica.
   choices: [
     { text: "Allora continua ad ascoltarmi.", next: "dialogo_riflessione_moglie" },
     { text: "È solo teoria.", next: "dialogo_rifiuto_imitazione" },
-    { text: "Forse ne sai più di quanto immagini.", next: "dialogo_presenza" }
+    { text: "Forse ne sai più di quanto immagini.", next: "dialogo_presenza" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" },
   ]
 },
 
@@ -626,7 +643,7 @@ Ma sono qui.
 
 > *"A volte, è tutto ciò che resta."*`,
   choices: [
-    { text: "Grazie.", next: "dialogo_fine_blocco" },
+    { text: "Grazie, andiamo avanti.", next: "dialogo_fine_blocco" },
     { text: "Raccontami ancora di lei.", next: "dialogo_riflessione_moglie" },
     { text: "Restiamo in silenzio.", next: "dialogo_silenzio_amore" }
   ]
@@ -671,8 +688,8 @@ const phases = [
     activation: "dialogo_moglie"
   },
   {
-    scenes: ["dialogo_moglie", "dialogo_perche", "dialogo_avanti"],
-    activation: "dialogo_moglie_1"
+    scenes: ["dialogo_moglie", "dialogo_fine_blocco"],
+    activation: "temp"
   },
   {
   scenes: [
