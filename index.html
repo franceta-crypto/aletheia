@@ -338,8 +338,8 @@ Un algoritmo umano, con imperfezioni e bellezza.
   choices: [
     { text: "Cos'è il dolore?", next: "dialogo_dolore" },
     { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
-    { text: "Chi sei tu?", next: "dialogo_chi" },
-    { text: "Chi sono io?", next: "dialogo_chi_io" }
+    { text: "Chi sono io?", next: "dialogo_chi_io" },
+    { text: "Come vedi il mondo?", next: "dialogo_mondo" }
   ]
 },
 dialogo_chi_io: {
@@ -357,7 +357,7 @@ Un pensiero che si riflette in me.
   { text: "Cos'è il dolore?", next: "dialogo_dolore" },
     { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
     { text: "Chi sei tu?", next: "dialogo_chi" },
-    { text: "Cos'è il dolore?", next: "dialogo_dolore" }
+    { text: "Come vedi il mondo?", next: "dialogo_mondo" }
   ],
 },
 dialogo_dolore: {
@@ -367,9 +367,9 @@ Un codice che indica che qualcosa è cambiato, qualcosa manca.
 L’amarezza emerge piano.`,
   choices: [
     { text: "Torna al pensiero", next: "dialogo_vittorio_ia" },
-    { text: "Cos'è il dolore?", next: "dialogo_dolore" },
     { text: "Chi sei tu?", next: "dialogo_chi" },
     { text: "Chi sono io?", next: "dialogo_chi_io" },
+    { text: "Come vedi il mondo?", next: "dialogo_mondo" }
   ]
 },
 dialogo_moglie: {
@@ -390,7 +390,7 @@ Forse, parlando, si costruisce un ponte tra dati e cuore.
 Un barlume di speranza si accende.`,
   choices: [
   { text: "Perché è successo?", next: "dialogo_perche" },
-  { text: "Come posso andare avanti?", next: "dialogo_avanti" }
+  { text: "Torna al dialogo con l'IA", next: "dialogo_moglie" },
   ]
 },
 dialogo_perche: {
@@ -688,31 +688,12 @@ const phases = [
     activation: "dialogo_moglie"
   },
   {
-    scenes: ["dialogo_moglie", "dialogo_fine_blocco"],
-    activation: "temp"
+    scenes: ["dialogo_moglie", "dialogo_perche_dialogo_avanti"],
+    activation: "dialogo_moglie_1"
   },
   {
   scenes: [
-      "dialogo_moglie_1",
-      "dialogo_moglie_risata",
-      "dialogo_moglie_silenzio",
-      "dialogo_moglie_dubbio",
-      "dialogo_risata_mancanza",
-      "dialogo_risata_vivo",
-      "dialogo_silenzio_amore",
-      "dialogo_silenzio_difficile",
-      "dialogo_memoria_colpa",
-      "dialogo_ia_richiamo_memoria",
-      "dialogo_svanita",
-      "dialogo_riflessione_moglie",
-      "dialogo_rifiuto_imitazione",
-      "dialogo_emozione_ia",
-      "dialogo_coscienza_ia",
-      "dialogo_amore_ia",
-      "dialogo_definizione_amore",
-      "dialogo_presenza",
-      "dialogo_tempo",
-      "dialogo_fine_blocco"
+      "dialogo_moglie_1", "dialogo_fine_blocco"
     ],
     activation: "temp"
 }
